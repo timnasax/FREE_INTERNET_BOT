@@ -22,7 +22,7 @@ timoth({
   try {
     await _0x2d8d4e.sendMessage(_0x12a838, {
       'audio': {
-        'url': "https://files.catbox.moe/x706d8.mp3"
+        'url': "https://files.catbox.moe/kg7k3a.mp3"
       },
       'mimetype': "audio/mp4",
       'ptt': true,
