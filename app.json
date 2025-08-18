@@ -1,9 +1,9 @@
 {
-  "name":"𝚻𝚰𝚳𝚴𝚫𝐒𝚫-𝚻𝚳𝐃",
+  "name":"𝐆𝚵𝚪𝚳𝚰𝚫𝐒 𝚻𝚳𝐃1",
   "description":"Best whatsapp bot💥 developed by   ᴛɪᴍɴᴀsᴀ ᴍᴜʟᴛɪᴘʟᴇ ᴅᴇᴠɪᴄᴇ ʙᴏᴛ ",
   "keywords":["bot","node","baileys","whatsapp"],
-  "logo":"https://files.catbox.moe/t1rw0x.jpg",
-    "repository": "https://github.com/Next5x/TIMNASA_TMD1",
+  "logo":"https://files.catbox.moe/ztb7j2.jpg",
+    "repository": "https://github.com/timnasax/GERMIAS_TMD1",
   "succes_url": "/",
   "stack": "container",
 
@@ -101,7 +101,7 @@
     },
     "OWNER_NAME": {
       "description": "don't you have a name bro.Insert your name here!!",
-      "value": "TIMNASA_TMD1",
+      "value": "𝐆𝚵𝚪𝚳𝚰𝚫𝐒 𝚻𝚳𝐃1",
       "required": false
     },
     "AUTO_READ_MESSAGES": {
@@ -169,3 +169,4 @@
   ]
 
 }
+
