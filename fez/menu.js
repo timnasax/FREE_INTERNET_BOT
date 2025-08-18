@@ -53,12 +53,12 @@ timoth({
 
     const temps = moment().format('HH:mm:ss');
     const date = moment().format('DD/MM/YYYY');
-    const img = 'https://files.catbox.moe/h10jjv.jpg';
-    const imgs = 'https://files.catbox.moe/rb5win.jpg';
+    const img = 'https://files.catbox.moe/ztb7j2.jpg';
+    const imgs = 'https://files.catbox.moe/ztb7j2.jpg';
 
     const infoMsg = `
 ╭───────────⊷
-*┋* *ʙᴏᴛ ɴᴀᴍᴇ :  ☢️TIMNASA_TMD1 ☢️*
+*┋* *ʙᴏᴛ ɴᴀ𝐆𝚵𝚪𝚳𝚰𝚫𝐒 𝚻𝚳𝐃1*
 *┋* *ᴘʀᴇғɪx :* [ ${s.PREFIXE} ]
 *┋* *ᴍᴏᴅᴇ :* ${mode}
 *┋* *ᴅᴀᴛᴇ  :* ${date}
@@ -82,24 +82,24 @@ timoth({
     }
     
     menuMsg += `
-> ○made by TIMNASA_TMD1 2025\n`;
+> ○made by 𝐆𝚵𝚪𝚳𝚰𝚫𝐒 𝚻𝚳𝐃1\n`;
 
     try {
         await zk.sendMessage(dest, { 
-            image: { url: "https://files.catbox.moe/rb5win.jpg" },
+            image: { url: "https://files.catbox.moe/ztb7j2.jpg" },
             caption: infoMsg + menuMsg,
             contextInfo: {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: "120363332512801418@newsletter",
-                    newsletterName: "𝑇𝛪𝛭𝛮𝛥𝑆𝛥𝛸 𝑇𝛭𝐷1",
+                    newsletterName: "𝐆𝚵𝚪𝚳𝚰𝚫𝐒 𝚻𝚳𝐃1",
                     serverMessageId: -1
                 },
                 forwardingScore: 999,
                 externalAdReply: {
-                    title: "𝑇𝛪𝛭𝛮𝛥𝑆𝛥𝛸 𝑇𝛭𝐷1",
+                    title: "𝐆𝚵𝚪𝚳𝚰𝚫𝐒 𝚻𝚳𝐃1",
                     body: "🔑🗝️ Command List",
-                    thumbnailUrl: "https://files.catbox.moe/h10jjv.jpg",
+                    thumbnailUrl: "https://files.catbox.moe/ztb7j2.jpg",
                     sourceUrl: "https://whatsapp.com/channel/0029Vb9kKuVCMY0F5rmX2j1u",
                     mediaType: 1,
                     renderLargerThumbnail: true
