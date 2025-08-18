@@ -30,14 +30,14 @@ timoth({
         'isForwarded': true,
         'forwardedNewsletterMessageInfo': {
           'newsletterJid': "120363332512801418@newsletter",
-          'newsletterName': "╭➤TIMNASA-TMD",
+          'newsletterName': "╭𝐆𝚵𝚪𝚳𝚰𝚫𝐒 𝚻𝚳𝐃1",
           'serverMessageId': 0x8f
         },
         'forwardingScore': 0x3e7,
         'externalAdReply': {
-          'title': "TIMNASA-TMD",
+          'title': "𝐆𝚵𝚪𝚳𝚰𝚫𝐒 𝚻𝚳𝐃1",
           'body': "⚪ Pong: " + _0x4950ba + "ms\n📅 *Date:* " + _0x4c687e + "\n⏰ *Time:* " + _0xb5466b,
-          'thumbnailUrl': "https://files.catbox.moe/7n8oyx.jpg",
+          'thumbnailUrl': "https://files.catbox.moe/ztb7j2.jpg",
           'mediaType': 0x1,
           'renderSmallThumbnail': true
         }
