@@ -1,12 +1,12 @@
 {
-  "name": "freeinternet",
+  "name": "FREE_INTERNET_BOT",
   "version": "4.5.0",
   "description": "A WhatsApp Bot Created By timnasax",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name freeinternet",
-    "stop": "pm2 stop freeinternet",
-    "restart": "pm2 restart freeinternet"
+    "start": "pm2 start index.js --deep-monitoring --attach --name FREE_INTERNET_BOT",
+    "stop": "pm2 stop FREE_INTERNET_BOT",
+    "restart": "pm2 restart FREE_INTERNET_BOT"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.18",
