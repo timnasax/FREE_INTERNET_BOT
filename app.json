@@ -1,8 +1,10 @@
+
+
 {
   "name": "𝐅𝚪𝚵𝚵 𝚰𝚴𝚻𝚵𝚪𝚴𝚵𝚻 𝚩𝚯𝚻",
   "description": "Javascript WhatsApp bot made by ғʀᴇᴇ ɪɴᴛᴇʀɴᴇᴛ ʙᴏᴛ",
   "logo": "https://res.cloudinary.com/dgy2dutjs/image/upload/v1751624587/url.crissvevo.co.tz/IMG_2353_fze42l.jpg",
-  "keywords": ["fFREE_INTERNET_BOT"],
+  "keywords": ["freeinternet"],
   "success_url": "/",
 
     "stack": "container",
