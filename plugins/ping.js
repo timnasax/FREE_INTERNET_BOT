@@ -1,20 +1,84 @@
+/*
 const config = require('../config');
 const { cmd, commands } = require('../command');
 
 cmd({
     pattern: "ping",
-    alias: ["speedl","pongl"],use: '.ping',
+    alias: "speed",
     desc: "Check bot's response time.",
     category: "main",
-    react: "🏓",
+    react: "🔄",
     filename: __filename
 },
-async (conn, mek, m, { from, quoted, sender, reply, }) => {
+async (conn, mek, m, { from, quoted, reply }) => {
     try {
-    const start = new Date().getTime();
+        const startTime = Date.now();
 
-        const reactionEmojis = ['🔥', '⚡', '🚀', '💨', '🎯', '🎉', '🌟', '💥', '🕐', '🔹'];
-        const textEmojis = ['💎', '🏆', '⚡️', '🚀', '🎶', '🌠', '🌀', '🔱', '🛡️', '✨'];
+        // Add a short delay
+        await new Promise(resolve => setTimeout(resolve, 100)); // 100ms delay
+
+        const endTime = Date.now();
+        const ping = endTime - startTime;
+
+        // Send the ping result
+        await conn.sendMessage(from, { 
+            text: `*📍 𝐏๏፝֟ƞ̽g : ${ping} 𝐌ʂ*`, 
+            contextInfo: {
+                mentionedJid: [m.sender],
+                forwardingScore: 999,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: '120363413554978773@newsletter',
+                    newsletterName: 'FREE_INTARNET_BOT 𝐏๏፝֟ƞ̽g  ⃪🤖͎᪳᪳𝆺𝅥',
+                    serverMessageId: 143
+                }
+            }
+        }, { quoted: mek });
+    } catch (e) {
+        console.error(e);
+        reply(`An error occurred: ${e.message}`);
+    }
+});
+
+// ping2 
+
+cmd({
+    pattern: "ping2",
+    desc: "Check bot's response time.",
+    category: "main",
+    react: "🍂",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        const startTime = Date.now()
+        const message = await conn.sendMessage(from, { text: '> ᴍᴇʟᴛɪɴɢ...*' })
+        const endTime = Date.now()
+        const ping = endTime - startTime
+        await conn.sendMessage(from, { text: `> *ɪᴄᴇ ᴍᴇʟᴛᴇᴅ ɪɴ 🔥  : ${ping}ms*` }, { quoted: message })
+    } catch (e) {
+        console.log(e)
+        reply(`${e}`)
+    }
+})
+*/
+const config = require('../config');
+const { cmd, commands } = require('../command');
+
+cmd({
+    pattern: "ping",
+    alias: ["speed","pong"],use: '.ping',
+    desc: "Check bot's response time.",
+    category: "main",
+    react: "📟",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, sender, reply }) => {
+    try {
+        const start = new Date().getTime();
+
+        const reactionEmojis = ['🔥', '🔮', '🌩️', '👻', '🍁', '🐍', '🎋', '🎐', '🪸', '📍', '👑', '🌀', '🪄'];
+        const textEmojis = ['🪀', '🪂', '⚡️', '🚀', '🏎️', '🚁', '🌀', '📟', '🎲', '✨'];
 
         const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
         let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
@@ -32,42 +96,46 @@ async (conn, mek, m, { from, quoted, sender, reply, }) => {
         const end = new Date().getTime();
         const responseTime = (end - start) / 1000;
 
-        const text = ` *𝐅𝚪𝚵𝚵 𝚰𝚴𝚻𝚵𝚪𝚴𝚵𝚻 𝚩𝚯𝚻🏓: (${responseTime.toFixed(2)})ms*`;
+        const text = `*${reactionEmoji} 𝐏๏፝֟ƞ̽g ${responseTime.toFixed(2)} 𝐌ʂ*`;
 
         await conn.sendMessage(from, {
-           text: text,
-           contextInfo: {
-              isForwarded: true,
-               forwardedNewsletterMessageInfo: {
-                 newsletterJid: '120363413554978773@newsletter',
-                   newsletterName: '╭••➤ғʀᴇᴇ ɪɴᴛᴇʀɴᴇᴛ ʙᴏᴛ',
-                   serverMessageId: 143
-               },
+            text,
+            contextInfo: {
+                mentionedJid: [sender],
                 forwardingScore: 999,
-                externalAdReply: {
-                    title: "🖥️ᴛᴇꜱᴛ ʙᴏᴛ ꜱᴘᴇᴇᴅ",
-                    body: "🏓ꜱʏꜱᴛᴇᴍ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ",
-                    thumbnailUrl: "https://files.catbox.moe/173jef.jpeg",
-                    sourceUrl: "https://whatsapp.com/channel/0029VarYP5iAInPtfQ8fRb2T",
-                    mediaType: 1,
-                    renderSmallThumbnail: true
+                isForwarded: false,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: '120363413554978773@newsletter',
+                    newsletterName: "FREE_INTARNET_BOT 𝐏๏፝֟ƞ̽g  ⃪🤖͎᪳᪳𝆺𝅥",
+                    serverMessageId: 143
                 }
             }
-        }, { quoted: {
-            key: {
-                fromMe: false,
-                participant: `0@s.whatsapp.net`,
-                remoteJid: "status@broadcast"
-            },
-            message: {
-                contactMessage: {
-                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=254700000000:+254 700 000000\nitem1.X-ABLabel:Bot\nEND:VCARD`    
-            }
-            }
-        } });
+        }, { quoted: mek });
 
     } catch (e) {
         console.error("Error in ping command:", e);
         reply(`An error occurred: ${e.message}`);
     }
 });
+
+// ping2 
+
+cmd({
+    pattern: "ping2",
+    desc: "Check bot's response time.",
+    category: "main",
+    react: "🧠",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        const startTime = Date.now()
+        const message = await conn.sendMessage(from, { text: '\`TIMNASA PINGING 🚀\`' })
+        const endTime = Date.now()
+        const ping = endTime - startTime
+        await conn.sendMessage(from, { text: `*TIMNASA PONGED ! : ${ping}ms ⚡*` }, { quoted: message })
+    } catch (e) {
+        console.log(e)
+        reply(`${e}`)
+    }
+})
