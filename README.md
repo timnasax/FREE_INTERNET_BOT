@@ -22,7 +22,7 @@
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
-[![FORK ALI_MD-V4](https://img.shields.io/badge/FORK%20-TIMNASA%20MD%20V1-white)](https://github.com/itx-alii-raza/FREE_INTERNET_BOT-V1/fork)
+[![FORK ALI_MD-V4](https://img.shields.io/badge/FORK%20-TIMNASA%20MD%20V1-white)](https://github.com/timnasax/FREE_INTERNET_BOT-V1/fork)
 
 ### <br>    ❖ SESSION_ID ❖
 
@@ -46,7 +46,7 @@
 
 ------------
  
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new-app?template=https://github.com/itx-alii-raza/FREE_INTERNET_BOT)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new-app?template=https://github.com/timnasax/FREE_INTERNET_BOT)
 
 🥂 `THIS BOT IS CREATED TO DOWNLOAD'S AND FIND VARIOUS TYPES THINGS QUICKLY **EXAMPLE** LOGO, PHOTO, STICKERS, VIDEOS, MOVIES, ADULT, AND MANY MORE FEATURES BY USING THIS BOT™ THIS BOT IS CREATED TO USING` 🥂 **[Baileys](https://github.com/WhiskeySockets/Baileys)**
 
