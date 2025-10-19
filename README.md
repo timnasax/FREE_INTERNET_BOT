@@ -1,99 +1,170 @@
----------
 
-### <br>  ❖ FREE_INTARNET_BOT V1 ❖
-🔰 **`THE WORLD BEST WHATSAPP BOT CREATED BY TIMNASA🐍`** 🔰
-
-----------
-
-<a><img src='https://files.catbox.moe/173jef.jpeg'/></a>
-
--------
-
- <p align="center">
-  <a href="#"><img src="http://readme-typing-svg.herokuapp.com?color=00008B&center=true&vCenter=true&multiline=false&lines=`TIMNASA+-+MD+-+V1+WHATSAPP+BOT`" alt="">
-
-<br>
-
------------
-<div align="center"><br> <img src="https://profile-counter.glitch.me/FREE_INTERNET_BOT-V1/count.svg" /><br>FREE_INTERNET_BOT-V1</div>
-
-------------
-
-<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
-<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
-
-[![FORK ALI_MD-V4](https://img.shields.io/badge/FORK%20-TIMNASA%20MD%20V1-white)](https://github.com/timnasax/FREE_INTERNET_BOT-V1/fork)
-
-### <br>    ❖ SESSION_ID ❖
-
-
-`✠ IF YOU DON'T HAVE YOUR SESSION_ID SO U CAN GET IT CLICK ON SESSION_ID BUTTON AND PASTE YOUR NUMBER With COUNTRY CODE EXAMPLE:+92300xxxxxx THEN YOU CAN GET YOUR SESSION_ID ✠`
-
-----------
-1. USE SESSION 1.
-<p align="center">
-<a href="https://timnasa-md.onrender.com"><img height= "35" title="Author" src="https://img.shields.io/badge/GET SESSION ID:1-black?style=for-the-badge&logo=render"></a>
-<p/>
-2. USE SESSION 2 IF SESSION:1 DOESN'T WORK.
-<p align="center">
-<a href="https://timnasa-md-pair-qr-265d7e16fc1c.herokuapp.com/"><img height= "35" title="Author" src="https://img.shields.io/badge/GET SESSION ID:2-black?style=for-the-badge&logo=render"></a>
-<p/>
----------------
-
-### <br>   ❖ DEPLOY_HEROKU ❖
-
-`✠ IF YOU WANT TO DEPLOY FREE_INTARNET_BOT V1 BOT ON HEROKU SO FIRST GET YOUR SESSION_ID THEN CLICK THIS BLUE BUTTON [DEPLOY TO HEROKU] THEN YOU CAN ENJOY THIS BOT ✠`
-
-------------
- 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new-app?template=https://github.com/timnasax/FREE_INTERNET_BOT)
-
-🥂 `THIS BOT IS CREATED TO DOWNLOAD'S AND FIND VARIOUS TYPES THINGS QUICKLY **EXAMPLE** LOGO, PHOTO, STICKERS, VIDEOS, MOVIES, ADULT, AND MANY MORE FEATURES BY USING THIS BOT™ THIS BOT IS CREATED TO USING` 🥂 **[Baileys](https://github.com/WhiskeySockets/Baileys)**
-
-------------------
-
-### <br> ❖ FOR SUPPORT ❖
-
-**`➩ HII DEARS FRIENDS IF YOU WANT ANY HELP SO YOU CAN CONTACT↘︎ WITH ME WIA WHATSAPP ITS ME TIMNASA࿐➺`**
-
--------
+# 🌟 Free Internet Bot 🌟
 
 <p align="center">
-  <a href="https://wa.me/+255784766591?text=*ʜɪɪ+TIMNASA TECH+ɪ+ɴᴇᴇᴅ+ʜᴇʟᴘ!.+ɪ+ᴍᴇssᴀɢᴇᴅ+ʏᴏᴜ+ғʀᴏᴍ+FREE_INTARNET_BOT-ᴠ1+ʀᴇᴘᴏ!!*" target="_blank">
-    <img alt="whatsapp" src="https://img.shields.io/badge/ Whatsapp -25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+  <img src="https://i.ibb.co/BVt9McxS/photo-2025-06-15-12-14-29-7516148628621099032.jpg" alt="Free Internet Bot Logo" width="600"/>
+</p>
 
------------    
+<p align="center">
+  <a href="https://github.com/SilvaTechB">
+    <img src="http://readme-typing-svg.herokuapp.com?color=6A0DAD&size=26&center=true&vCenter=true&width=500&lines=✨+Silva+Spark+MD;⚡+Powering+Your+WhatsApp+Experience;🌟+Star+and+Fork+This+Repo" alt="Header Typing SVG">
+  </a>
+</p>
 
-`✠ IF YOU WANT MORE ABOUT FREE_INTARNET_BOT V1 WHATSAPP BOT :-NEW UPDATED NEW CMDS SO JOIN OUR WHATSAPP CHANNEL FOR MORE INFORMATION CLICK THIS RED BUTTON 🔳 AND JOIN THE GROUP ✠`
+> **🚀 Updated with Latest Features | 🔥 Most Advanced WhatsApp Bot | 💜 Open Source**
 
----------
+---
 
-<a href="https://whatsapp.com/channel/0029VajweHxKQuJP6qnjLM31"><img src="https://img.shields.io/badge/%F0%9F%8E%89%20ᴊᴏɪɴ%20ᴏᴜʀ%20ᴡʜᴀᴛsᴀᴘᴘ%20ᴄʜᴀɴɴᴇʟ-red" alt="🔰 ᴊᴏɪɴ ᴍʏ ᴡʜᴀᴛsᴀᴘᴘ ᴄʜᴀɴɴᴇʟ ғᴏʀ ᴜᴘᴅᴀᴛᴇ 🔰" width="300"></a>
+## 📌 Table of Contents
+- [📱 Connect With Me](#-connect-with-me)
+- [💖 Support](#-support-silva-tech-inc)
+- [📊 Project Stats](#-project-stats)
+- [🚀 Getting Started](#-getting-started)
+- [☁️ Deployment Options](#️-deployment-options)
+- [⚠️ Important Notices](#️-important-notices)
+- [👥 Team](#-team)
 
---------------
- 
+---
 
-### <br>    ❖ DEPLOY_TALKDROVE ❖
+## 📱 Connect With Me
 
-  1. Deploy Now. 
+<p align="center">
+  <a href="https://whatsapp.com/channel/0029VaAkETLLY6d8qhLmZt2v">
+    <img src="https://img.shields.io/badge/WhatsApp_Channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" width="200">
+  </a>
+  <br>
+  <a href="https://instagram.com/_its.silva">
+    <img src="https://img.shields.io/badge/Instagram-_its.silva-E4405F?style=for-the-badge&logo=instagram&logoColor=white" width="200">
+  </a>
+  <br>
+  <a href="https://www.facebook.com/profile.php?id=100055490090211">
+    <img src="https://img.shields.io/badge/Facebook-Profile-1877F2?style=for-the-badge&logo=facebook&logoColor=white" width="200">
+  </a>
+  <br>
+  <a href="https://x.com/silva_african">
+    <img src="https://img.shields.io/badge/Twitter-@silva_african-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" width="200">
+  </a>
+</p>
 
-<a href='https://host.talkdrove.com/dashboard/select-bot/prepare-deployment?botId=51' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/DEPLOY-NOW-h?color=navy&style=for-the-badge&logo=visualstudiocode'/></a></p>
+---
 
-----------
+## 💖 Support Silva Tech Inc
 
-### <br>    ❖ DEPLOY_REPLIT ❖
+<p align="center">
+  <a href="https://github.com/sponsors/SilvaTechB">
+    <img src="https://img.shields.io/badge/💜_Sponsor_Our_Work-Purple_Vibes-9D00FF?style=for-the-badge&logo=githubsponsors" alt="Sponsor Badge" width="300">
+  </a>
+</p>
 
-`✠ IF U HAVE YOUR REPLIT ACCOUNT SO YOU CAN EASY DEPLOY FREE_INTARNET_BOT V4 ON REPLIT CLICK BLACK BUTTON [DEPLOY TO REPLIT] AND FIND CONFIG.JSON FILE THEN PASTE YOUR SESSION AND MONGODB KEY THEN RUN CODE AND ENJOY BOT ✠`
+---
 
--------------
+## 📊 Project Stats
 
-<p align="left"><a href="https://repl.it/github/TIMNASSA TECH-cmr/KERM-MD-V1"> <img src='https://img.shields.io/badge/-REPLIT-orange?style=for-the-badge&logo=replit&logoColor=white'/></a>
+<div align="center">
 
---------------
+| Statistic | Badge |
+|-----------|-------|
+| **Profile Views** | <img src="https://komarev.com/ghpvc/?username=SilvaSparkMD&label=Profile+Views&color=9D00FF&style=flat-square"> |
+| **Last Update** | <img src="https://img.shields.io/github/last-commit/SilvaTechB/silva-spark-md?color=9D00FF&label=Last+Update&style=flat-square"> |
+| **Repo Size** | <img src="https://img.shields.io/github/repo-size/SilvaTechB/silva-spark-md?color=9D00FF&label=Repo+Size&style=flat-square"> |
+| **Stars** | <img src="https://img.shields.io/github/stars/SilvaTechB/silva-spark-md?color=9D00FF&label=Stars&style=flat-square"> |
+| **Forks** | <img src="https://img.shields.io/github/forks/SilvaTechB/silva-spark-md?color=9D00FF&label=Forks&style=flat-square"> |
 
-### <br>   ❖ DEPLOY_KOYEB ❖
+</div>
 
-`✠ IF YOU HAVE YOUR KOYEB ACCOUNT SO YOU CAN DEPLOY FREE_INTARNET_BOT V1 ON KOYEB WITH EASY SETUP NOTE:-MAYBE SOME PROBLEM TO DEPLOY ON KOYEB I ILL FIX SOON ✠`
+---
 
----------
+## 🚀 Getting Started
+
+### 1️⃣ Fork This Repository
+```bash
+# Click the button below to fork the project
+```
+<p align="center">
+  <a href="https://github.com/timnasa/free_internate_bot/fork">
+    <img src="https://img.shields.io/badge/Click_to_Fork-9D00FF?style=for-the-badge&logo=github" alt="Fork Button" width="250">
+  </a>
+</p>
+
+### 2️⃣ Get Session ID
+```bash
+# You'll need a WhatsApp session to proceed
+```
+<p align="center">
+  <a href="https://silva-session-selector.vercel.app">
+    <img src="https://img.shields.io/badge/Get_Session_ID-9D00FF?style=for-the-badge&logo=whatsapp" alt="Session Button" width="250">
+  </a>
+</p>
+
+---
+
+## ☁️ Deployment Options
+
+<p align="center">
+  <table>
+    <tr>
+      <th>Platform</th>
+      <th>Deploy Button</th>
+    </tr>
+    <tr>
+      <td>Heroku</td>
+      <td><a href="https://spark-fork.vercel.app"><img src="https://img.shields.io/badge/Deploy_to-Heroku-430098?style=for-the-badge&logo=heroku"></a></td>
+    </tr>
+    <tr>
+      <td>Koyeb</td>
+      <td><a href="https://app.koyeb.com/services/deploy?type=git&repository=SilvaTechB/silva-spark-md&ports=3000"><img src="https://img.shields.io/badge/Deploy_to-Koyeb-121212?style=for-the-badge&logo=koyeb"></a></td>
+    </tr>
+    <tr>
+      <td>Railway</td>
+      <td><a href="https://railway.app/new"><img src="https://img.shields.io/badge/Deploy_to-Railway-0B0D0E?style=for-the-badge&logo=railway"></a></td>
+    </tr>
+    <tr>
+      <td>Render</td>
+      <td><a href="https://dashboard.render.com/web/new"><img src="https://img.shields.io/badge/Deploy_to-Render-46E3B7?style=for-the-badge&logo=render"></a></td>
+    </tr>
+  </table>
+</p>
+
+---
+
+## ⚠️ Important Notices
+
+### 🛑 Disclaimer
+```diff
+- This is an independent project not affiliated with WhatsApp Inc.
+- Account bans may occur with misuse (only 1 unban allowed)
+- Use at your own risk - no liability for bans/misuse
+```
+
+### 📜 Terms of Use
+```diff
++ Strictly NOT FOR SALE
++ No unauthorized copying/distribution
++ Credit must be given when using/modifying
+```
+
+---
+
+## 👥 Team
+
+<div align="center">
+
+| Role | Badge |
+|------|-------|
+| **Project Owner** | <img src="https://img.shields.io/badge/Silva_TechB-Owner-9D00FF?style=for-the-badge"> |
+| **Main Developer** | <img src="https://img.shields.io/badge/Silva_TechB-Developer-9D00FF?style=for-the-badge"> |
+
+</div>
+
+---
+
+<p align="center">
+  <img src="https://i.imgur.com/LyHic3i.gif" alt="Footer Animation" width="100%">
+</p>
+
+<p align="center">
+  <img src="https://profile-counter.glitch.me/{SilvaSparkMD}/count.svg" alt="Visitor Counter">
+  <br>
+  <sub>✨ Thank you for visiting! ✨</sub>
+</p>
 
