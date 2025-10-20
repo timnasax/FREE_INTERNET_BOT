@@ -84,5 +84,4 @@ module.exports = {
     getAnti,
     getAllAntiDeleteSettings,
 };
-
-// by TimnasaTech 
+//SILVA PRIME TECH INC
