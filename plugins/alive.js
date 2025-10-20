@@ -1,71 +1,56 @@
-
-const { cmd } = require("../command");
-const moment = require("moment");
-
-let botStartTime = Date.now(); // Enregistrement de l'heure de démarrage du bot
-const ALIVE_IMG = "https://files.catbox.moe/173jef.jpeg"; // Assurez-vous que cette URL est valide
+const { cmd } = require('../command');
+const os = require('os');
+const { runtime } = require('../lib/functions');
+const pkg = require('../package.json'); // Get version from package.json
 
 cmd({
-    pattern: "alive",
-    desc: "Check if the bot is active.",
-    category: "info",
-    react: "🤖",
-    filename: __filename
-}, async (conn, mek, m, { reply, from }) => {
-    try {
-        const pushname = m.pushName || "User"; // Nom de l'utilisateur ou valeur par défaut
-        const currentTime = moment().format("HH:mm:ss");
-        const currentDate = moment().format("dddd, MMMM Do YYYY");
+  pattern: "alive",
+  alias: ["status", "runtime", "uptime"],
+  desc: "Check uptime and system status",
+  category: "main",
+  react: "💡",
+  filename: __filename
+}, async (conn, mek, m, {
+  from, sender, reply
+}) => {
+  try {
+    const usedMemMB = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2);
+    const totalMemGB = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2);
+    const up = runtime(process.uptime());
 
-        const runtimeMilliseconds = Date.now() - botStartTime;
-        const runtimeSeconds = Math.floor((runtimeMilliseconds / 1000) % 60);
-        const runtimeMinutes = Math.floor((runtimeMilliseconds / (1000 * 60)) % 60);
-        const runtimeHours = Math.floor(runtimeMilliseconds / (1000 * 60 * 60));
+    const caption = `
+╭━━〔 ✦ FREE INTERNET ✦ 〕━━╮
+┃ ⚙️ *Bot Status Report* ⚙️
+┃
+┃ 🧬 *Version:* ${pkg.version}
+┃ ⏱ *Uptime:* ${up}
+┃ 🧠 *Memory:* ${usedMemMB} MB / ${totalMemGB} GB
+┃ 🖥 *Host:* ${os.hostname()}
+┃ 👑 *Owner:* ${global?.config?.OWNER_NAME || "SPARK"}
+┃ 💖 *Framework:* Free Internet Bot
+┃
+╰━━━━━━━━━━━━━━━━━━━━╯
+🔗 Stay Powered • Stay Sparked
+`;
 
-        const formattedInfo = `
-🌟 *FREE_INTARNET_BOT V1 STATUS* 🌟
-Hey 👋🏻 ${pushname}
-🕒 *Time*: ${currentTime}
-📅 *Date*: ${currentDate}
-⏳ *Uptime*: ${runtimeHours} hours, ${runtimeMinutes} minutes, ${runtimeSeconds} seconds
-
-*🤖sᴛᴀᴛᴜs*: *FREE_INTARNET_BOT ᴀʟɪᴠᴇ ᴀɴᴅ ʀᴇᴀᴅʏ*
-
-*🤍ᴍᴀᴅᴇ ᴡɪᴛʜ ʟᴏᴠᴇ*
-        `.trim();
-
-        // Vérifier si l'image est définie
-        if (!ALIVE_IMG || !ALIVE_IMG.startsWith("http")) {
-            throw new Error("Invalid ALIVE_IMG URL. Please set a valid image URL.");
+    await conn.sendMessage(from, {
+      video: { url: 'https://files.catbox.moe/2xxr9h.mp4' },
+      caption,
+      gifPlayback: true,
+      contextInfo: {
+        mentionedJid: [sender],
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363332512801418@newsletter',
+          newsletterName: 'FREE INTERNET 💖',
+          serverMessageId: 143
         }
+      }
+    }, { quoted: mek });
 
-        // Envoyer le message avec image et légende
-        await conn.sendMessage(from, {
-            image: { url: ALIVE_IMG }, // Assurez-vous que l'URL est valide
-            caption: formattedInfo,
-            contextInfo: { 
-                mentionedJid: [m.sender],
-                forwardingScore: 999,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363413554978773@newsletter',
-                    newsletterName: 'FREE_INTARNET_BOT 🍁',
-                    serverMessageId: 143
-                }
-            }
-        }, { quoted: mek });
-
-    } catch (error) {
-        console.error("Error in alive command: ", error);
-        
-        // Répondre avec des détails de l'erreur
-        const errorMessage = `
-❌ An error occurred while processing the alive command.
-🛠 *Error Details*:
-${error.message}
-
-Please report this issue or try again later.
-        `.trim();
-        return reply(errorMessage);
-    }
+  } catch (e) {
+    console.error("🔥 Error in .alive command:", e);
+    reply(`❌ Error: ${e.message}`);
+  }
 });

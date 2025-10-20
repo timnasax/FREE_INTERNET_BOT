@@ -1,49 +1,71 @@
-
-
 const { cmd } = require('../command');
+const config = require('../config');
 
 cmd({
-    pattern: "owner",
-    react: "👑", // Reaction emoji when the command is triggered
-    alias: ["king"],
-    desc: "Get owner number",
-    category: "main",
-    filename: __filename
-}, 
-async (conn, mek, m, { from }) => {
-    try {
-        // Owner's contact info
-        const ownerNumber = '+255784766591'; // Replace this with the actual owner number
-        const ownerName = '𓆩ု᪳𝐀𝐋𝐈 𝐈𝐍𝅦𝐒i͜͡𝐃𝐄ှ᪳𓆪'; // Replace this with the owner's name
-        const organization = 'UD TEAM'; // Optional: replace with the owner's organization
+  pattern: "owner",
+  react: "🦋",
+  desc: "Sends contact info of the bot owner.",
+  category: "main",
+  filename: __filename
+},
+async (conn, mek, m, { from, reply }) => {
+  try {
+    const ownerNumber = config.OWNER_NUMBER;
+    const ownerName = config.OWNER_NAME;
 
-        // Create a vCard (contact card) for the owner
-        const vcard = 'BEGIN:VCARD\n' +
-                      'VERSION:3.0\n' +
-                      `FN:${ownerName}\n` +  // Full Name
-                      `ORG:${organization};\n` +  // Organization (Optional)
-                      `TEL;type=CELL;type=VOICE;waid=${ownerNumber.replace('+', '')}:${ownerNumber}\n` +  // WhatsApp ID and number
-                      'END:VCARD';
+    // Construct a professional vCard
+    const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:${ownerName}
+TEL;type=CELL;type=VOICE;waid=${ownerNumber.replace('+', '')}:${ownerNumber}
+END:VCARD`;
 
-        // Send the vCard first
-        const sentVCard = await conn.sendMessage(from, {
-            contacts: {
-                displayName: ownerName,
-                contacts: [{ vcard }]
-            }
-        });
+    // Send vCard Contact
+    await conn.sendMessage(from, {
+      contacts: {
+        displayName: ownerName,
+        contacts: [{ vcard }]
+      }
+    }, { quoted: mek });
 
-        // Send a reply message that references the vCard
-        await conn.sendMessage(from, {
-            text: `This is the owner's contact: ${ownerName}`,
-            contextInfo: {
-                mentionedJid: [ownerNumber.replace('+255784766591') + '+255784766591@s.whatsapp.net'], // Mention the owner
-                quotedMessageId: sentVCard.key.id // Reference the vCard message
-            }
-        }, { quoted: mek });
+    // Send Image with Caption
+    await conn.sendMessage(from, {
+      image: { url: 'https://fies.catbox.moe/173jef.jpeg' },
+      caption: 
+`╭━━〔 *⎈ Free Internet Bot ⎈* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• *Owner Name:* ${ownerName}
+┃◈┃• *Phone:* ${ownerNumber}
+┃◈┃• *Bot Version:* 2.0.1
+┃◈┃• *Team:* timnasa Developers 💖
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+📣 _Reach out for support, updates, or collabs!_
 
-    } catch (error) {
-        console.error(error);
-        await conn.sendMessage(from, { text: 'Sorry, there was an error fetching the owner contact.' }, { quoted: mek });
-    }
+> 🔐 *Powered by Free Internet Bot*`,
+      contextInfo: {
+        mentionedJid: [`${ownerNumber.replace('+', '')}@s.whatsapp.net`],
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363332512801418@newsletter',
+          newsletterName: 'Free Internet Bot',
+          serverMessageId: 143
+        }
+      }
+    }, { quoted: mek });
+
+    // Send Voice Note (PTT)
+    await conn.sendMessage(from, {
+      audio: {
+        url: 'https://github.com/JawadYTX/KHAN-DATA/raw/refs/heads/main/autovoice/contact.m4a'
+      },
+      mimetype: 'audio/mp4',
+      ptt: true
+    }, { quoted: mek });
+
+  } catch (error) {
+    console.error("[OWNER COMMAND ERROR]", error);
+    reply(`❌ *An error occurred:* ${error.message}`);
+  }
 });

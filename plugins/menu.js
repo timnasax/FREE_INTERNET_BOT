@@ -1,315 +1,432 @@
+const config = require('../config');
+const { cmd, commands } = require('../command');
+const os = require("os");
+const { runtime } = require('../lib/functions');
+const axios = require('axios');
+const pkg = require('../package.json'); // Get version from package.json
 
+// Visual Elements
+const rainbow = ['💥', '💥'];
+const emojis = ['✨', '⚡', '🌟', '💫', '🎀', '🧿', '💠', '🔮', '🌈'];
 
+const randomEmoji = () => emojis.sort(() => 0.5 - Math.random()).slice(0, 3).join('');
+const divider = (length = 20, char = '─') => char.repeat(length);
 
+// 🔁 Animated Video + Audio Sender
+async function sendMenu(conn, from, mek, sender, text, title, sendAudio = false) {
+  try {
+    await conn.sendMessage(from, {
+      video: { url: 'https://files.catbox.moe/2xxr9h.mp4' },
+      caption: text,
+      gifPlayback: true,
+      contextInfo: {
+        mentionedJid: [sender],
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363332512801418@newsletter',
+          newsletterName: 'FREE INTERNET BOT 💖🦄',
+          serverMessageId: 143
+        }
+      }
+    }, { quoted: mek });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const config = require('../config')
-const {cmd , commands} = require('../command')
-cmd({
-
-    pattern: "menu",
-
-    react: "🍭",
-
-    alias: ["allmenu","bot","commands"],
-
-    desc: "Get bot\'s command list.",
-
-    category: "main",
-
-    use: '.menu3',
-
-    filename: __filename
-
-},
-
-async(conn, mek, m,{from, l, quoted, body, isCmd, umarmd, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-
-try{
-let madeMenu = `*╭══〘〘 ${config.BOT_NAME} 〙〙*
-*┃❍ ᴍᴏᴅᴇ* : *${config.MODE}*
-*┃❍ ᴘʀᴇғɪx* : *${config.PREFIX}*
-*┃❍ ʀᴀᴍ* : *34.56 ɢʙ/60.79*
-*┃❍ ᴄʀᴇᴀᴛᴏʀ* : *TIMNASA TECH ɪɴxɪᴅᴇ*
-*┃❍ ᴀʟᴡᴀʏs ᴏɴʟɪɴᴇ* : *${config.ALWAYS_ONLINE}*
-*┃❍ ᴠᴇʀsɪᴏɴs* : *ᴠ.4.1.0*
-*╰═════════════════⊷*
- *♡︎•━━━━━━☻︎━━━━━━•♡︎*
-*╭────❒⁠⁠⁠⁠* *📥 DOWNLOADER-CMD 📥* *❒⁠⁠⁠⁠* 
-*├⬡ .ғʙ*
-*├⬡ .ɪɴꜱᴛᴀ*
-*├⬡ .ᴠɪᴅᴇᴏ*
-*├⬡ .ɢᴅʀɪᴠᴇ*
-*├⬡ .ᴛᴡɪᴛᴛᴇʀ*
-*├⬡ .ᴛᴛ*
-*├⬡ .ᴍᴇᴅɪᴀғɪʀᴇ*
-*├⬡ .ᴘʟᴀʏ*
-*├⬡ .ᴘʟᴀʏ2*
-*├⬡ .sᴏɴɢ*
-*├⬡ .ᴠɪᴅᴇᴏ*
-*├⬡ .ᴠɪᴅᴇᴏ2*
-*├⬡ .sᴘᴏᴛɪꜰʏ*
-*├⬡ .ɪᴍɢ*
-*├⬡ .ʟʏʀɪᴄs*
-*├⬡ .ᴀᴘᴋ*
-*├⬡ .ᴅᴀʀᴀᴍᴀ*
-*├⬡ .ᴘʟᴀʏ2*
-*├⬡ .ᴘʟᴀʏ4*
-*├⬡ .ʙᴀɪsᴄᴏᴘᴇ*
-*├⬡ .ɢɪɴɪsɪsɪʟᴀ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🏮 EMPIRE TIMNASA 🏮* *❒⁠⁠⁠⁠* 
-*├⬡ .ғᴀᴍɪʟʏ*
-*├⬡ .ᴄʜᴀɴɴᴇʟ*
-*├⬡ .sᴜᴘᴘᴏʀᴛ*
-*├⬡ .ᴇxᴏʀ*
-*├⬡ .ᴘʀᴏᴍᴏᴛᴇsᴛᴀꜰꜰ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🕺 FUN-CMD 🕺* *❒⁠⁠⁠⁠* 
-*├⬡  .Fᴀᴍɪʟʏ*
-*├⬡  .ʜᴇᴀʀᴛ*
-*├⬡  .ɴɪᴋᴀʟ*
-*├⬡  .sʜʏ*
-*├⬡ .ᴍᴏᴏɴ*
-*├⬡ .ᴄᴏɴғᴜsᴇᴅ*
-*├⬡ .ʜᴀᴘᴘʏ*
-*├⬡ .ᴀɴɢʀʏ*
-*├⬡ .sᴀᴅ*
-*├⬡ .ʜᴏᴛ*
-*├⬡ .ᴇᴍɪx🙂,😇*
-*├⬡ .ᴇxᴏʀ*
-*├⬡ .ᴀᴛᴛᴘ*
-*├⬡ .ꜱʜᴀᴘᴀʀ*
-*├⬡ .ʙᴏɴᴋ*
-*├⬡ .ꜱᴍᴜɢ*
-*├⬡ .ʙᴜʟʟʏ*
-*├⬡ .ᴀᴡᴏᴏ*
-*├⬡ .ᴋɪꜱꜱ*
-*├⬡ .ᴄᴜᴅᴅʟᴇ*
-*├⬡ .ʟɪᴄᴋ*
-*├⬡ .ɢʟᴏᴍᴘ*
-*├⬡ .ꜱᴍɪʟᴇ*
-*├⬡ .ʜɪɢʜꜰɪᴠᴇ*
-*├⬡ .ꜱʟᴀᴘ*
-*├⬡ .ᴋɪʟʟ*
-*├⬡  .ᴡɪɴᴋ*
-*├⬡ .ʙɪᴛᴇ*
-*├⬡ .ᴄʀɪɴɢᴇ*
-*├⬡ .ᴅᴀɴᴄᴇ*
-*├⬡ .ʙʟᴜꜱʜ*
-*├⬡ .ʜᴀɴᴅʜᴏʟᴅ*
-*├⬡ .ɴᴏᴍ*
-*├⬡ .ʜᴀᴄᴋ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🔎 SEARCH-CMD 🔍* *❒⁠⁠⁠⁠* 
-*├⬡ .ʏᴛꜱ*
-*├⬡ .ʏᴛᴀ*
-*├⬡ .ʟᴏʟɪ*
-*├⬡ .ᴍᴏᴠɪᴇɪɴғᴏ*
-*├⬡ .ᴍᴏᴠɪᴇ*
-*├⬡ .Gᴏᴏɢʟᴇ*
-*├⬡ .ᴡᴇᴀᴛʜᴇʀ*
-*├⬡ .sᴛɪᴄᴋsᴇᴀʀᴄʜ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🧸 EMOTIONAL CMD🧸* *❒⁠⁠⁠⁠* 
-*├⬡  .sᴀᴅ*
-*├⬡  .ᴀɴɢʀʏ*
-*├⬡  .ʜᴀᴘᴘʏ*
-*├⬡  .ʜᴇᴀʀᴛ*
-*├⬡  .ᴄᴏɴғᴜsᴇᴅ*
-*├⬡  .sʜʏ*
-*├⬡  .ᴍᴏᴏɴ*
-*├⬡  .ʜᴏᴛ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🎮 GAME-CMD 🎮* *❒⁠⁠⁠⁠* 
-*├⬡ .ɴᴜᴍʙᴇʀɢᴀᴍᴇ*
-*├⬡ .ʀᴏʟʟ🎲*
-*├⬡ .ᴄᴏɪɴꜰʟɪᴘ🪙*
-*├⬡ .pick*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🧠 AI-CMD 🧠* *❒⁠⁠⁠⁠* 
-*├⬡ .ɢᴘᴛ*
-*├⬡ .ᴀɪ*
-*├⬡ .ᴀɴᴀʟʏsᴇ*
-*├⬡ .ʟʟᴀᴍᴀ3*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *👨‍💻 OWNER-CMD 👨‍💻* *❒⁠⁠⁠⁠* 
-*├⬡ .ᴜᴘᴅᴀᴛᴇᴄᴍᴅ*
-*├⬡ .ᴜᴘᴅᴀᴛᴇ*
-*├⬡ .ᴀʟʟᴠᴀʀ*
-*├⬡ .sᴇᴛᴛɪɴɢs*
-*├⬡ .ᴏᴡɴᴇʀ*
-*├⬡ .sᴛᴀᴛᴜs-ʀᴇᴘʟʏ*
-*├⬡ .ᴀᴜᴛᴏ-ʀᴇᴘʟʏ*
-*├⬡ .ᴀɴᴛɪ-ʙᴀᴅ*
-*├⬡ .ᴀʟᴡᴀʏs-ᴏɴʟɪɴᴇ*
-*├⬡ .ᴀᴜᴛᴏ-sᴛɪᴄᴋᴇʀ*
-*├⬡ .ᴀᴜᴛᴏ-ᴛʏᴘɪɴɢ*
-*├⬡ .ᴀᴜᴛᴏ-ʀᴇᴄᴏʀᴅɪɴɢ*
-*├⬡ .sᴛᴀᴛᴜs-ʀᴇᴀᴄᴛ*
-*├⬡ .ᴀɴᴛɪ-ᴄᴀʟʟ*
-*├⬡ .ʀᴇᴀᴅ-ᴍᴇssᴀɢᴇ*
-*├⬡ .ᴀɴᴛɪ-ʙᴀᴅ*
-*├⬡ .ᴀᴜᴛᴏ-ᴛʏᴘɪɴɢ*
-*├⬡ .ᴀɴᴛɪ-ʟɪɴᴋ*
-*├⬡ .ᴀɴᴛɪᴅᴇʟᴇᴛᴇ*
-*├⬡ .ʀᴇᴘᴏ*
-*├⬡ .ᴋɪɴɢ*
-*├⬡ .ꜱʏꜱᴛᴇᴍ*
-*├⬡ .ꜱᴛᴀᴛᴜꜱ*
-*├⬡ .Aʙᴏᴜᴛ*
-*├⬡ .ʙʟᴏᴄᴋ*
-*├⬡ .ᴜɴʙʟᴏᴄᴋ*
-*├⬡ .sʜᴜᴛᴅᴏᴡɴ*
-*├⬡ .ᴄʟᴇᴀʀᴄʜᴀᴛs*
-*├⬡ .sᴇᴛᴘᴘ*
-*├⬡ .ʙʀᴏᴀᴅᴄᴀsᴛ*
-*├⬡ .ᴊɪᴅ*
-*├⬡ .ɢᴊɪᴅ*
-*├⬡ .ᴘᴀɪʀ*
-*├⬡ .sᴀᴠᴇ*
-*├⬡ .ʀᴀɴᴋ*
-*├⬡ .ᴄᴀʟᴄ*
-*├⬡ .ʀᴇꜱᴛᴀʀᴛ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *👥 GROUP-CMD 👥* *❒⁠⁠⁠⁠* 
-*├⬡ .ʀᴇᴍᴏᴠᴇ*
-*├⬡ .ᴅᴇʟᴇᴛᴇ*
-*├⬡ .ᴀᴅᴅ*
-*├⬡ .ᴋɪᴄᴋ*
-*├⬡ .ᴋɪᴄᴋᴀʟʟ*
-*├⬡ .sᴇᴛɢᴏᴏᴅʙʏᴇ*
-*├⬡ .sᴇᴛᴡᴇʟᴄᴏᴍᴇ*
-*├⬡ .ᴘʀᴏᴍᴏᴛᴇ*
-*├⬡ .ᴅᴇᴍᴏᴛᴇ*
-*├⬡ .ᴛᴀɢᴀʟʟ*
-*├⬡ .ɢᴇᴛᴘɪᴄ*
-*├⬡ .ɪɴᴠɪᴛᴇ*
-*├⬡ .ʀᴇᴠᴏᴋᴇ*
-*├⬡ .ᴊᴏɪɴʀᴇǫᴜᴇsᴛs*
-*├⬡ .ᴀʟʟʀᴇǫ*
-*├⬡ .ᴍᴜᴛᴇ*
-*├⬡ .ᴅᴇʟ*
-*├⬡ .ᴜɴᴍᴜᴛᴇ*
-*├⬡ .ʟᴏᴄᴋɢᴄ*
-*├⬡ .ᴜɴʟᴏᴄᴋɢᴄ*
-*├⬡ .ʟᴇᴀᴠᴇ*
-*├⬡ .ᴜᴘᴅᴀᴛᴇɢɴᴀᴍᴇ*
-*├⬡ .ᴜᴘᴅᴀᴛᴇɢᴅᴇsᴄ*
-*├⬡ .ᴊᴏɪɴ*
-*├⬡ .ʜɪᴅᴇᴛᴀɢ*
-*├⬡ .ɢɪɴғᴏ*
-*├⬡ .ᴅɪsᴀᴘᴘᴇᴀʀ ᴏɴ*
-*├⬡ .ᴅɪsᴀᴘᴘᴇᴀʀ ᴏғғ*
-*├⬡ .ᴅɪsᴀᴘᴘᴇᴀʀ 7ᴅ 24ʜ 90ᴅ*
-*├⬡ .sᴇɴᴅᴅᴍ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *📃 INFO-CMD 📃* *❒⁠⁠⁠⁠* 
-*├⬡ .ᴀʙᴏᴜᴛ*
-*├⬡ .TIMNASA TECHᴠᴇ*
-*├⬡ .ʙᴏᴛɪɴꜰᴏ*
-*├⬡ .ꜱᴛᴀᴛᴜꜱ*
-*├⬡ .ᴘɪɴɢ*
-*├⬡ .ᴘɪɴɢ2*
-*├⬡ .ꜱʏꜱᴛᴇᴍ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🤖 BOT-CMD 🤖* *❒⁠⁠⁠⁠* 
-*├⬡ .ᴠᴇʀsɪᴏɴ*
-*├⬡ .ʀᴇᴘᴏ*
-*├⬡ .ᴍᴇɴᴜ*
-*├⬡ .ᴍᴇɴᴜ2*
-*├⬡ .ᴍᴇɴᴜ3*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🎡 CONVERTER-CMD 🎡* *❒⁠⁠⁠⁠* 
-*├⬡ .sᴛɪᴄᴋᴇʀ*
-*├⬡ .ᴛʀᴛ*
-*├⬡ .ᴛᴏɪᴍᴀɢᴇ*
-*├⬡ .ᴛᴛs*
-*├⬡ .ꜰᴀɴᴄʏ*
-*├⬡ .ᴜʀʟ*
-*├⬡ .Aɢᴇ*
-*├⬡ .ᴛɢs*
-*├⬡ .ᴄᴏɴᴠᴇʀᴛ*
-*├⬡ .ᴛɪɴʏ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *⛱️ RANDOM-CMD ⛱️* *❒*
-*├⬡ .ᴅᴏɢ*
-*├⬡ .ᴄᴀᴛ*
-*├⬡ .ᴀɴɪᴍᴇ*
-*├⬡ .ᴄᴏᴜᴘʟᴇᴘᴘ*
-*├⬡ .ꜰɪɴᴅɴᴀᴍᴇ*
-*├⬡ .ʀᴀɴᴅᴏᴍᴀɴɪᴍᴇ*
-*├⬡ .ᴀɴɪᴍᴇɢɪʀʟ*
-*├⬡ .ᴀɴɪᴍᴇɢɪʀʟ1*
-*├⬡ .ᴀɴɪᴍᴇɢɪʀʟ2*
-*├⬡ .ᴀɴɪᴍᴇɢɪʀʟ3*
-*├⬡ .ᴀɴɪᴍᴇɢɪʀʟ4*
-*├⬡ .ᴀɴɪᴍᴇɢɪʀʟ5*
-*├⬡ .ᴘɪᴄᴋᴜᴘʟɪɴᴇ*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🏜️ WALLPAPERS-CMD 🏜️* *❒⁠⁠⁠⁠* 
-*├⬡ .ɪᴍɢ*
-*├⬡ .ʟᴏɢᴏ*
-*├⬡ .ss*
-*┕──────────────────❒*
-*╭────❒⁠⁠⁠⁠* *🌐 OTHER-CMD 🌐* *❒⁠⁠⁠⁠* 
-*├⬡ .ᴛʀᴛ*
-*├⬡ .ᴊᴏᴋᴇ*
-*├⬡ .ꜰᴀᴄᴛ*
-*├⬡ .ɢɪᴛʜᴜʙ*
-*├⬡ .ɢᴘᴀꜱꜱ*
-*├⬡ .ʜᴀᴄᴋ*
-*├⬡ .ǫᴜᴏᴛᴇ*
-*├⬡ .ǫʀ*
-*├⬡ .ꜱʀᴇᴘᴏ*
-*├⬡ .sʏsᴛᴇᴍ*
-*├⬡ .ʀᴀɴᴋ*
-*├⬡ .ᴛɪᴍᴇᴢᴏɴᴇ*
-*├⬡ .ᴅᴇꜰɪɴᴇ*
-*├⬡ .ᴅᴀɪʟʏꜰᴀᴄᴛ*
-*├⬡ .ᴍɪɴᴜᴛᴏʀ*
-*┕──────────────────❒*
-> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ TIMNASA TECH*`
-
-await conn.sendMessage(from,{image:{url: config.ALIVE_IMG},caption:madeMenu,
-                             contextInfo: {
-    mentionedJid: [m.sender],
-    forwardingScore: 999,
-    isForwarded: true,
-    forwardedNewsletterMessageInfo: {
-      newsletterJid: '120363413554978773@newsletter',
-      newsletterName: '𓆩ྀི͛𝐀ɭīī 𝐌Ɗ 𝚩❍𝐓 𝐌𝛆፝֟፝֟ƞ̽ʊྀི̊𓆪͛',
-      serverMessageId: 999
+    if (sendAudio) {
+      await conn.sendMessage(from, {
+        audio: { url: 'https://files.catbox.moe/a1sh4u.mp3' },
+        mimetype: 'audio/mp4',
+        ptt: true
+      }, { quoted: mek });
     }
+  } catch (e) {
+    console.error(`Menu Error (${title}):`, e);
+    throw e;
   }
-}, { quoted: mek });
-} catch (e) {
-console.log(e)
-reply(`${e}`)
 }
-})
+
+// Main Menu
+cmd({
+  pattern: "menu",
+  desc: "Display all bot commands",
+  category: "menu",
+  react: "💖",
+  filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+  try {
+    const menuText = `
+╭━━━━━━━━━━━━━━━━━━━━╮
+  ✨ FREE INTERNET BOT ✨
+╰━━━━━━━━━━━━━━━━━━━━╯
+
+${rainbow.join('')} BOT INFORMATION ${rainbow.reverse().join('')}
+👑 Owner » ${config.OWNER_NAME}
+📱 Version » ${pkg.version}
+⚙️ Mode » ${config.MODE.toUpperCase()}
+🔣 Prefix » [${config.PREFIX}]
+⏳ Runtime » ${runtime(process.uptime())}
+${divider(30)}
+
+${rainbow.join('')} COMMAND CATEGORIES ${rainbow.reverse().join('')}
+${randomEmoji()} » ${config.PREFIX}aimenu (AI Tools)
+${randomEmoji()} » ${config.PREFIX}animemenu (Anime)
+${randomEmoji()} » ${config.PREFIX}convertmenu (Converters)
+${randomEmoji()} » ${config.PREFIX}funmenu (Fun)
+${randomEmoji()} » ${config.PREFIX}dlmenu (Downloads)
+${randomEmoji()} » ${config.PREFIX}groupmenu (Group)
+${randomEmoji()} » ${config.PREFIX}ownermenu (Owner)
+${randomEmoji()} » ${config.PREFIX}othermenu (Utilities)
+${divider(30)}
+
+💡 Type ${config.PREFIX}<command> to use
+${config.DESCRIPTION}
+    `;
+
+    await sendMenu(conn, from, mek, m.sender, menuText, 'Main Menu', true);
+  } catch (e) {
+    reply(`❌ Error: ${e.message}`);
+  }
+});
+
+// AI Menu
+cmd({
+  pattern: "aimenu",
+  desc: "AI commands menu",
+  category: "menu",
+  react: "🤖",
+  filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+  try {
+    const aiMenu = `
+╭━━━━━━━━━━━━━━━━━━━━╮
+  🧠 AI POWER MENU 🧠
+╰━━━━━━━━━━━━━━━━━━━━╯
+
+${rainbow.join('')} AI CHATBOTS ${rainbow.reverse().join('')}
+• ai » General AI assistant
+• gpt » ChatGPT interaction
+• gpt4 » GPT-4 model
+• meta » Meta AI
+• bing » Microsoft Bing AI
+• copilot » GitHub Copilot
+• blackbox » Code specialist
+
+${rainbow.join('')} TOOLS ${rainbow.reverse().join('')}
+• tts » Text to speech
+• trt » Translate text
+• fancy » Fancy text generator
+
+${divider(30)}
+💡 Example: ${config.PREFIX}gpt How does AI work?
+    `;
+
+    await sendMenu(conn, from, mek, m.sender, aiMenu, 'AI Menu');
+  } catch (e) {
+    reply(`❌ Error: ${e.message}`);
+  }
+});
+
+// Anime Menu
+cmd({
+  pattern: "animemenu",
+  desc: "Anime commands menu",
+  category: "menu",
+  react: "🧚",
+  filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+  try {
+    const animeMenu = `
+╭━━━━━━━━━━━━━━━━━━━━╮
+  🎌 ANIME WORLD 🎌
+╰━━━━━━━━━━━━━━━━━━━━╯
+
+${rainbow.join('')} CHARACTERS ${rainbow.reverse().join('')}
+• waifu » Random waifu
+• neko » Cute neko girl
+• maid » Anime maid
+• loli » Loli character
+• foxgirl » Fox girl
+• naruto » Naruto character
+
+${rainbow.join('')} CONTENT ${rainbow.reverse().join('')}
+• animenews » Latest news
+• animegirl » Random girl
+• anime1-5 » Different styles
+• fack » Anime facts
+• dog » Anime dogs
+
+${rainbow.join('')} REACTIONS ${rainbow.reverse().join('')}
+• hug » Anime hug gif
+• kiss » Anime kiss gif
+• poke » Anime poke gif
+
+${divider(30)}
+🎀 Enjoy anime content!
+    `;
+
+    await sendMenu(conn, from, mek, m.sender, animeMenu, 'Anime Menu');
+  } catch (e) {
+    reply(`❌ Error: ${e.message}`);
+  }
+});
+
+// Download Menu
+cmd({
+  pattern: "dlmenu",
+  desc: "Download commands menu",
+  category: "menu",
+  react: "💚",
+  filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+  try {
+    const dlMenu = `
+╭━━━━━━━━━━━━━━━━━━━━╮
+  📥 DOWNLOAD CENTER 📥
+╰━━━━━━━━━━━━━━━━━━━━╯
+
+${rainbow.join('')} SOCIAL MEDIA ${rainbow.reverse().join('')}
+• facebook » FB video
+• tiktok » TikTok video
+• twitter » X/Twitter video
+• insta » Instagram media
+
+${rainbow.join('')} MUSIC/VIDEO ${rainbow.reverse().join('')}
+• play » YT audio
+• ytmp3 » YT to MP3
+• ytmp4 » YT to MP4
+• spotify » Track download
+• audio » Audio extractor
+• video » Video downloader
+
+${rainbow.join('')} FILES ${rainbow.reverse().join('')}
+• mediafire » MediaFire
+• apk » APK files
+• git » GitHub repos
+• gdrive » Google Drive
+
+${divider(30)}
+🔍 Usage: ${config.PREFIX}command <url>
+    `;
+
+    await sendMenu(conn, from, mek, m.sender, dlMenu, 'Download Menu');
+  } catch (e) {
+    reply(`❌ Error: ${e.message}`);
+  }
+});
+
+// Group Menu
+cmd({
+  pattern: "groupmenu",
+  desc: "Group commands menu",
+  category: "menu",
+  react: "🥰",
+  filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+  try {
+    const groupMenu = `
+╭━━━━━━━━━━━━━━━━━━━━╮
+  🧑‍🤝‍🧑 GROUP MANAGER 🧑‍🤝‍🧑
+╰━━━━━━━━━━━━━━━━━━━━╯
+
+${rainbow.join('')} ADMIN TOOLS ${rainbow.reverse().join('')}
+• add » Add members
+• kick » Remove member
+• promote » Make admin
+• demote » Remove admin
+• grouplink » Get invite
+• revoke » Reset link
+
+${rainbow.join('')} SETTINGS ${rainbow.reverse().join('')}
+• setwelcome » Welcome msg
+• setgoodbye » Goodbye msg
+• updategname » Change name
+• updategdesc » Change desc
+• lockgc » Lock group
+• unlockgc » Unlock group
+
+${rainbow.join('')} UTILITIES ${rainbow.reverse().join('')}
+• tagall » Mention all
+• hidetag » Hidden mention
+• getpic » Get group icon
+• ginfo » Group info
+
+${divider(30)}
+⚠️ Admin privileges required
+    `;
+
+    await sendMenu(conn, from, mek, m.sender, groupMenu, 'Group Menu');
+  } catch (e) {
+    reply(`❌ Error: ${e.message}`);
+  }
+});
+
+// Fun Menu
+cmd({
+  pattern: "funmenu",
+  desc: "Fun commands menu",
+  category: "menu",
+  react: "😎",
+  filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+  try {
+    const funMenu = `
+╭━━━━━━━━━━━━━━━━━━━━╮
+  🎉 FUN & GAMES 🎉
+╰━━━━━━━━━━━━━━━━━━━━╯
+
+${rainbow.join('')} INTERACTIVE ${rainbow.reverse().join('')}
+• ship » Ship two users
+• character » Create avatar
+• hack » Fake hack
+• joke » Random joke
+• insult » Funny roast
+• pickup » Pickup lines
+
+${rainbow.join('')} REACTIONS ${rainbow.reverse().join('')}
+• hug » Send hug
+• kiss » Send kiss
+• poke » Poke someone
+• slap » Slap someone
+• pat » Head pats
+
+${rainbow.join('')} EXPRESSIONS ${rainbow.reverse().join('')}
+• hrt » Heart eyes
+• hpy » Happy face
+• anger » Angry face
+• shy » Shy reaction
+
+${divider(30)}
+🎲 Try them all for fun!
+    `;
+
+    await sendMenu(conn, from, mek, m.sender, funMenu, 'Fun Menu');
+  } catch (e) {
+    reply(`❌ Error: ${e.message}`);
+  }
+});
+
+// Owner Menu
+cmd({
+  pattern: "ownermenu",
+  desc: "Owner commands menu",
+  category: "menu",
+  react: "🔰",
+  filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+  try {
+    const ownerMenu = `
+╭━━━━━━━━━━━━━━━━━━━━╮
+  👑 OWNER COMMANDS 👑
+╰━━━━━━━━━━━━━━━━━━━━╯
+
+${rainbow.join('')} BOT CONTROL ${rainbow.reverse().join('')}
+• restart » Restart bot
+• shutdown » Stop bot
+• updatecmd » Update
+• block » Block user
+• unblock » Unblock
+
+${rainbow.join('')} PROFILE ${rainbow.reverse().join('')}
+• setpp » Set profile pic
+• fullpp » Full profile
+• menu » Show menu
+• menu2 » Alternative menu
+
+${rainbow.join('')} DEBUGGING ${rainbow.reverse().join('')}
+• gjid » Get group JID
+• jid » Get user JID
+• listcmd » All commands
+• allmenu » Complete menu
+
+${divider(30)}
+🔒 Restricted to owner only
+    `;
+
+    await sendMenu(conn, from, mek, m.sender, ownerMenu, 'Owner Menu');
+  } catch (e) {
+    reply(`❌ Error: ${e.message}`);
+  }
+});
+
+// Convert Menu
+cmd({
+  pattern: "convertmenu",
+  desc: "Conversion commands menu",
+  category: "menu",
+  react: "🥀",
+  filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+  try {
+    const convertMenu = `
+╭━━━━━━━━━━━━━━━━━━━━╮
+  🔄 CONVERTER TOOLS 🔄
+╰━━━━━━━━━━━━━━━━━━━━╯
+
+${rainbow.join('')} MEDIA CONVERSION ${rainbow.reverse().join('')}
+• sticker » Image to sticker
+• sticker2 » Video to sticker
+• tomp3 » Media to audio
+• take » Take sticker
+
+${rainbow.join('')} TEXT TOOLS ${rainbow.reverse().join('')}
+• tts » Text to speech
+• trt » Translate text
+• fancy » Stylish text
+• font » Different fonts
+
+${rainbow.join('')} OTHER ${rainbow.reverse().join('')}
+• img » Image editor
+• vv » View once tools
+
+${divider(30)}
+🛠️ Powerful conversion tools
+    `;
+
+    await sendMenu(conn, from, mek, m.sender, convertMenu, 'Convert Menu');
+  } catch (e) {
+    reply(`❌ Error: ${e.message}`);
+  }
+});
+
+// Other Menu
+cmd({
+  pattern: "othermenu",
+  desc: "Utility commands menu",
+  category: "menu",
+  react: "🤖",
+  filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+  try {
+    const otherMenu = `
+╭━━━━━━━━━━━━━━━━━━━━╮
+  🛠️ UTILITY TOOLS 🛠️
+╰━━━━━━━━━━━━━━━━━━━━╯
+
+${rainbow.join('')} INFORMATION ${rainbow.reverse().join('')}
+• weather » Weather report
+• news » Latest news
+• movie » Movie info
+• define » Dictionary
+• wikipedia » Wiki search
+• fact » Interesting facts
+
+${rainbow.join('')} SOCIAL ${rainbow.reverse().join('')}
+• githubstalk » GitHub info
+• pair » Match users
+• pair2 » Alternative match
+• vv » View once tools
+
+${rainbow.join('')} DEVELOPER ${rainbow.reverse().join('')}
+• srepo » Search repos
+• gpass » Generate password
+• yts » YT search
+• ytv » YT video search
+
+${divider(30)}
+🔧 Useful everyday tools
+    `;
+
+    await sendMenu(conn, from, mek, m.sender, otherMenu, 'Utility Menu');
+  } catch (e) {
+    reply(`❌ Error: ${e.message}`);
+  }
+});

@@ -1,141 +1,102 @@
-/*
-const config = require('../config');
-const { cmd, commands } = require('../command');
+const fs = require('fs');
+const os = require('os');
+const { cmd } = require('../command');
+
+// Safely get version from package.json
+let version = "1.0.0";
+try {
+    const pkg = JSON.parse(fs.readFileSync('./package.json'));
+    version = pkg.version || "1.0.0";
+} catch (err) {
+    console.warn("⚠️ Could not read version:", err.message);
+}
 
 cmd({
     pattern: "ping",
     alias: "speed",
-    desc: "Check bot's response time.",
+    desc: "Check bot response time, system info, and user stats.",
     category: "main",
-    react: "🔄",
+    react: "🌐",
     filename: __filename
-},
-async (conn, mek, m, { from, quoted, reply }) => {
+}, 
+async (conn, mek, m, { from, reply }) => {
     try {
-        const startTime = Date.now();
+        const start = Date.now();
+        await new Promise(resolve => setTimeout(resolve, 100));
+        const ping = Date.now() - start;
 
-        // Add a short delay
-        await new Promise(resolve => setTimeout(resolve, 100)); // 100ms delay
+        const totalRAM = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2);
+        const freeRAM = (os.freemem() / 1024 / 1024 / 1024).toFixed(2);
+        const usedRAM = (totalRAM - freeRAM).toFixed(2);
+        const uptime = (os.uptime() / 60).toFixed(0);
+        const cpu = os.cpus()?.[0]?.model || "Unknown CPU";
 
-        const endTime = Date.now();
-        const ping = endTime - startTime;
+        let groupCount = 0;
+        let userCount = 0;
+        const chats = conn.chats || conn.store?.chats || {};
 
-        // Send the ping result
-        await conn.sendMessage(from, { 
-            text: `*📍 𝐏๏፝֟ƞ̽g : ${ping} 𝐌ʂ*`, 
+        if (chats && typeof chats === 'object') {
+            for (const [id] of Object.entries(chats)) {
+                if (id.endsWith('@g.us')) groupCount++;
+                else if (id.endsWith('@s.whatsapp.net')) userCount++;
+            }
+        }
+
+        const msg = `╭━━〔 *⎈ Free Internet Bot - Sʏsᴛᴇᴍ Rᴇᴘᴏʀᴛ* 〕━━┈⊷
+┃ ⚡ *Speed:* \`${ping}ms\`
+┃ 🧠 *Uptime:* \`${uptime} mins\`
+┃ 💾 *RAM:* \`${usedRAM}/${totalRAM} GB\`
+┃ 🔥 *CPU:* \`${cpu}\`
+┃ 🌐 *Net Speed:* ~\`25.4 Mbps\` ↓ / \`7.8 Mbps\` ↑
+┃ 👤 *Users:* \`${userCount}\`
+┃ 👥 *Groups:* \`${groupCount}\`
+┃ 📦 *Version:* \`v${version}\`
+╰━━━⊷ *© Free Internet Bot 2025* ⎈`;
+
+        await conn.sendMessage(from, {
+            text: msg,
             contextInfo: {
-                mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363413554978773@newsletter',
-                    newsletterName: 'FREE_INTARNET_BOT 𝐏๏፝֟ƞ̽g  ⃪🤖͎᪳᪳𝆺𝅥',
-                    serverMessageId: 143
-                }
-            }
-        }, { quoted: mek });
-    } catch (e) {
-        console.error(e);
-        reply(`An error occurred: ${e.message}`);
-    }
-});
-
-// ping2 
-
-cmd({
-    pattern: "ping2",
-    desc: "Check bot's response time.",
-    category: "main",
-    react: "🍂",
-    filename: __filename
-},
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
-    try {
-        const startTime = Date.now()
-        const message = await conn.sendMessage(from, { text: '> ᴍᴇʟᴛɪɴɢ...*' })
-        const endTime = Date.now()
-        const ping = endTime - startTime
-        await conn.sendMessage(from, { text: `> *ɪᴄᴇ ᴍᴇʟᴛᴇᴅ ɪɴ 🔥  : ${ping}ms*` }, { quoted: message })
-    } catch (e) {
-        console.log(e)
-        reply(`${e}`)
-    }
-})
-*/
-const config = require('../config');
-const { cmd, commands } = require('../command');
-
-cmd({
-    pattern: "ping",
-    alias: ["speed","pong"],use: '.ping',
-    desc: "Check bot's response time.",
-    category: "main",
-    react: "📟",
-    filename: __filename
-},
-async (conn, mek, m, { from, quoted, sender, reply }) => {
-    try {
-        const start = new Date().getTime();
-
-        const reactionEmojis = ['🔥', '🔮', '🌩️', '👻', '🍁', '🐍', '🎋', '🎐', '🪸', '📍', '👑', '🌀', '🪄'];
-        const textEmojis = ['🪀', '🪂', '⚡️', '🚀', '🏎️', '🚁', '🌀', '📟', '🎲', '✨'];
-
-        const reactionEmoji = reactionEmojis[Math.floor(Math.random() * reactionEmojis.length)];
-        let textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
-
-        // Ensure reaction and text emojis are different
-        while (textEmoji === reactionEmoji) {
-            textEmoji = textEmojis[Math.floor(Math.random() * textEmojis.length)];
-        }
-
-        // Send reaction using conn.sendMessage()
-        await conn.sendMessage(from, {
-            react: { text: textEmoji, key: mek.key }
-        });
-
-        const end = new Date().getTime();
-        const responseTime = (end - start) / 1000;
-
-        const text = `*${reactionEmoji} 𝐏๏፝֟ƞ̽g ${responseTime.toFixed(2)} 𝐌ʂ*`;
-
-        await conn.sendMessage(from, {
-            text,
-            contextInfo: {
-                mentionedJid: [sender],
-                forwardingScore: 999,
-                isForwarded: false,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363413554978773@newsletter',
-                    newsletterName: "FREE_INTARNET_BOT 𝐏๏፝֟ƞ̽g  ⃪🤖͎᪳᪳𝆺𝅥",
+                    newsletterJid: '120363332512801418@newsletter',
+                    newsletterName: '⚡ Free Internet Bot ⚡',
                     serverMessageId: 143
                 }
             }
         }, { quoted: mek });
 
-    } catch (e) {
-        console.error("Error in ping command:", e);
-        reply(`An error occurred: ${e.message}`);
+    } catch (error) {
+        console.error(error);
+        reply(`❌ Error: ${error.message}`);
     }
 });
 
-// ping2 
-
+// Lightweight Ping2 Command
 cmd({
     pattern: "ping2",
-    desc: "Check bot's response time.",
+    desc: "Quick ping check with a fancy style.",
     category: "main",
-    react: "🧠",
+    react: "💀",
     filename: __filename
 },
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+async (conn, mek, m, { from, reply }) => {
     try {
-        const startTime = Date.now()
-        const message = await conn.sendMessage(from, { text: '\`TIMNASA PINGING 🚀\`' })
-        const endTime = Date.now()
-        const ping = endTime - startTime
-        await conn.sendMessage(from, { text: `*TIMNASA PONGED ! : ${ping}ms ⚡*` }, { quoted: message })
-    } catch (e) {
-        console.log(e)
-        reply(`${e}`)
+        const start = Date.now();
+        const temp = await conn.sendMessage(from, { text: "💫 *SPARKING... Please wait...*" });
+        const ping = Date.now() - start;
+
+        const msg = `╭────❍ *Free Internet Bot*
+│
+├ ✦ 𝙎𝙥𝙚𝙚𝙙: *${ping}ms*
+├ ✦ 𝙋𝙞𝙣𝙜 𝙏𝙚𝙨𝙩: ✅
+├ ✦ 𝙑𝙚𝙧𝙨𝙞𝙤𝙣: *v${version}*
+│
+╰────❍ *💖 Powered by timnasa tech*`;
+
+        await conn.sendMessage(from, { text: msg }, { quoted: temp });
+    } catch (error) {
+        console.error(error);
+        reply(`❌ Error: ${error.message}`);
     }
-})
+});

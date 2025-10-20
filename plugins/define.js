@@ -1,6 +1,3 @@
-
-
-
 const axios = require('axios');
                          const {cmd , commands} = require('../command');
 
@@ -31,13 +28,13 @@ const wordInfo = `
 📝 *Example*: ${example}
 🔗 *Synonyms*: ${synonyms}
 
-*MADE WITH ♥ FREE_INTERNET_BOT-V1*`;
+> *@ 💎 Free Internet Bot MD 💎*`;
 
                                  return reply(wordInfo);
                              } catch (e) {
                                  console.log(e);
                                  if (e.response && e.response.status === 404) {
-                                     return reply("🚫 Word not found. Please check the spelling and try again.");
+                                     return reply("🚫💎 Free Internet Bot MD 💎 Word not found. Please check the spelling and try again.");
                                  }
                                  return reply("⚠️ An error occurred while fetching the definition. Please try again later.");
                              }

@@ -1,7 +1,7 @@
 const { cmd } = require('../command');
 
 cmd({
-    pattern: "jid",
+    pattern: "jid1",
     desc: "Get the JID of the user or group.",
     react: "📍",
     category: "group",
@@ -10,12 +10,12 @@ cmd({
     try {
         // Check if the user has the necessary permissions (Owner or Admin)
         if (!isGroup && !isOwner) {
-            return reply("*⚠️ Only the bot owner or group admins can use this command.*");
+            return reply("⚠️ Only the bot owner or group admins can use this command.");
         }
 
         // If it's a group, reply with the group JID
         if (isGroup) {
-            return reply(`*ɢʀᴏᴜᴘ ᴊɪᴅ* *${from}@g.us*`);
+            return reply(`Group JID: *${from}@g.us*`);
         }
 
         // If it's a personal chat, reply with the user's JID
@@ -48,7 +48,7 @@ cmd({
         // If the message is from a group
         if (isGroup) {
             // Respond with the group JID
-            return reply(`*ɢʀᴏᴜᴘ ᴊɪᴅ:* *${from}@g.us*`);
+            return reply(`Group JID: *${from}@g.us*`);
         }
 
         // If it's a personal chat, respond with the user's JID
