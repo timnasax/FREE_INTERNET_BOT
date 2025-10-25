@@ -1,9 +1,0 @@
------------
-
-***WELCOME TO FREE_INTERNET_BOT-V1 PLUGINS LIST CREATED BY TIMNASA 237***
-
------------
-
-***THE WORLD BEST WHATSAPP BOT***
-
-----------
